@@ -1,0 +1,153 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Syne:wght@600;700;800&display=swap');
+
+@layer base {
+  :root {
+    --background: 270 20% 98%;
+    --foreground: 270 15% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 270 15% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 270 15% 10%;
+    --primary: 262 83% 58%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 270 20% 96%;
+    --secondary-foreground: 270 15% 25%;
+    --muted: 270 15% 94%;
+    --muted-foreground: 270 10% 50%;
+    --accent: 330 85% 60%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 270 15% 90%;
+    --input: 270 15% 93%;
+    --ring: 262 83% 58%;
+    --radius: 1rem;
+    --chart-1: 262 83% 58%;
+    --chart-2: 330 85% 60%;
+    --chart-3: 197 71% 52%;
+    --chart-4: 43 96% 56%;
+    --chart-5: 142 71% 45%;
+  }
+
+  .dark {
+    --background: 270 15% 6%;
+    --foreground: 270 10% 96%;
+    --card: 270 15% 10%;
+    --card-foreground: 270 10% 96%;
+    --popover: 270 15% 10%;
+    --popover-foreground: 270 10% 96%;
+    --primary: 262 83% 68%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 270 15% 15%;
+    --secondary-foreground: 270 10% 80%;
+    --muted: 270 15% 14%;
+    --muted-foreground: 270 10% 55%;
+    --accent: 330 85% 65%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 70% 55%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 270 15% 18%;
+    --input: 270 15% 16%;
+    --ring: 262 83% 68%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'DM Sans', sans-serif;
+  }
+  h1, h2, h3 {
+    font-family: 'Syne', sans-serif;
+  }
+}
+
+.font-display { font-family: 'Syne', sans-serif; }
+.font-body { font-family: 'DM Sans', sans-serif; }
+
+/* SOS animations */
+.sos-pulse {
+  animation: sos-pulse-animation 2s infinite;
+}
+
+@keyframes sos-pulse-animation {
+  0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+  70% { box-shadow: 0 0 0 30px rgba(239, 68, 68, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+}
+
+.shield-glow {
+  animation: shield-glow-animation 3s ease-in-out infinite;
+}
+
+@keyframes shield-glow-animation {
+  0%, 100% { box-shadow: 0 0 20px rgba(139, 92, 246, 0.3); }
+  50% { box-shadow: 0 0 40px rgba(139, 92, 246, 0.6); }
+}
+
+.float-animation {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+/* Skeleton shimmer */
+.skeleton-shimmer {
+  background: linear-gradient(90deg, hsl(var(--muted)) 25%, hsl(var(--secondary)) 50%, hsl(var(--muted)) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Card hover */
+.card-hover {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(139, 92, 246, 0.15);
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Bottom nav safe area */
+.pb-safe {
+  padding-bottom: max(1.5rem, env(safe-area-inset-bottom));
+}
+
+/* Mesh gradient backgrounds */
+.mesh-bg {
+  background: 
+    radial-gradient(ellipse at 20% 50%, rgba(139, 92, 246, 0.08) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, rgba(236, 72, 153, 0.06) 0%, transparent 60%),
+    hsl(var(--background));
+}
+
+.dark .mesh-bg {
+  background: 
+    radial-gradient(ellipse at 20% 50%, rgba(139, 92, 246, 0.12) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, rgba(236, 72, 153, 0.08) 0%, transparent 60%),
+    hsl(var(--background));
+}
+
